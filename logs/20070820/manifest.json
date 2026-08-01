@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "team_id": "contest2026_026_dami",
+  "github_login": "20070820",
+  "generator": "claude-code-collector@1.2.0",
+  "updated_at": "2026-08-01T07:29:28.150Z",
+  "sessions": [
+    {
+      "session_id": "57edc5b1-437d-45c7-9830-476d220c5035",
+      "tool": "claude-code",
+      "started_at": "2026-07-25T07:09:12.743Z",
+      "last_event_at": "2026-07-30T08:07:47.377Z",
+      "event_count": 221,
+      "raw_event_count": 2959,
+      "file_path": "logs/20070820/2026-07-30/claude-code__57edc5b1-437d-45c7-9830-476d220c5035.jsonl",
+      "collection_mode": "cli",
+      "health": "ok",
+      "model": "mimo-v2.5-pro"
+    },
+    {
+      "session_id": "2bcc25d2-d20e-44b7-aaf8-57ff05964b24",
+      "tool": "claude-code",
+      "started_at": "2026-07-28T08:28:45.610Z",
+      "last_event_at": "2026-07-28T08:50:47.627Z",
+      "event_count": 355,
+      "raw_event_count": 476,
+      "file_path": "logs/20070820/2026-07-28/claude-code__2bcc25d2-d20e-44b7-aaf8-57ff05964b24.jsonl",
+      "collection_mode": "cli",
+      "health": "ok",
+      "model": "mimo-v2.5-pro"
+    },
+    {
+      "session_id": "219c4703-261e-41a7-9df0-282342d1d777",
+      "tool": "claude-code",
+      "started_at": "2026-07-29T08:52:39.714Z",
+      "last_event_at": "2026-07-30T03:13:07.817Z",
+      "event_count": 149,
+      "raw_event_count": 446,
+      "file_path": "logs/20070820/2026-07-30/claude-code__219c4703-261e-41a7-9df0-282342d1d777.jsonl",
+      "collection_mode": "cli",
+      "health": "ok",
+      "model": "mimo-v2.5-pro"
+    },
+    {
+      "session_id": "89ae2bd3-4475-4e2b-a5b7-a262478b6187",
+      "tool": "claude-code",
+      "started_at": "2026-07-30T03:23:22.635Z",
+      "last_event_at": "2026-07-30T03:36:48.522Z",
+      "event_count": 173,
+      "raw_event_count": 242,
+      "file_path": "logs/20070820/2026-07-30/claude-code__89ae2bd3-4475-4e2b-a5b7-a262478b6187.jsonl",
+      "collection_mode": "cli",
+      "health": "ok",
+      "model": "mimo-v2.5-pro"
+    },
+    {
+      "session_id": "d62c1617-7361-4987-929d-8953ff009f5b",
+      "tool": "claude-code",
+      "started_at": "2026-07-30T08:17:14.030Z",
+      "last_event_at": "2026-07-30T10:17:07.091Z",
+      "event_count": 402,
+      "raw_event_count": 601,
+      "file_path": "logs/20070820/2026-07-30/claude-code__d62c1617-7361-4987-929d-8953ff009f5b.jsonl",
+      "collection_mode": "cli",
+      "health": "ok",
+      "model": "mimo-v2.5-pro"
+    },
+    {
+      "session_id": "8aec5ad1-35f4-48dd-95b3-b92fcdf33ef7",
+      "tool": "claude-code",
+      "started_at": "2026-07-30T10:19:44.002Z",
+      "last_event_at": "2026-07-30T10:32:42.120Z",
+      "event_count": 37,
+      "raw_event_count": 71,
+      "file_path": "logs/20070820/2026-07-30/claude-code__8aec5ad1-35f4-48dd-95b3-b92fcdf33ef7.jsonl",
+      "collection_mode": "cli",
+      "health": "ok",
+      "model": "mimo-v2.5-pro"
+    },
+    {
+      "session_id": "cd2a4ba5-8fb2-4025-a804-e3aa5ad827c5",
+      "tool": "claude-code",
+      "started_at": "2026-08-01T07:29:28.145Z",
+      "last_event_at": "2026-08-01T07:29:28.145Z",
+      "event_count": 28,
+      "raw_event_count": 38,
+      "file_path": "logs/20070820/2026-08-01/claude-code__cd2a4ba5-8fb2-4025-a804-e3aa5ad827c5.jsonl",
+      "collection_mode": "cli",
+      "health": "ok",
+      "model": "mimo-v2.5-pro"
+    }
+  ]
+}
