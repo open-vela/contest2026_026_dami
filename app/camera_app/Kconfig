@@ -1,0 +1,5 @@
+config LVX_USE_CONTEST2026_026_CAM_APP
+	bool "Contest 2026 team 026 cam_app"
+	default n
+	---help---
+		Enable the contest 2026 team 026 cam_app.

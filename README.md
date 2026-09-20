@@ -1,148 +1,182 @@
-# contest2026_026_dami
+# 基于 ESP32-S3 Eye 的智能投屏设备
 
-👋 欢迎参加 **2026 首届 openvela AI 硬件开发者大赛**！
-
-这是组委会为你的队伍创建的**专属参赛仓库**（本仓为样例/模板，队伍编号 `026`；你看到的将是你自己的 `contest2026_<编号>_<队伍名>`）。比赛期间，你的全部参赛代码、打包产物与 AI Coding 日志都提交到这里。
-
-> 本仓既是「代码仓」，又内置了一键拉取整套 openvela 工程的 `repo` 清单（manifest）。你只需跟它打交道，**自始至终只动一个文件夹**。
-
----
-
-## 一、先读这些官方文档
-
-**通用（所有赛道必读）：**
-
-| 文档                                                                                                                                     | 用途                                           |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| [《大赛总览》](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/contest_overview.md)                        | 赛道、流程、评分、资源，建议先通读             |
-| [《参赛代码提交指南》](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/code_submission_guide.md)           | 仓库获取、提交流程、时间与权限（**以此为准**） |
-| [《AI Coding 日志归集与提交手册》](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/ai_coding_log_guide.md) | 如何导出 AI 对话日志并提交到 `logs/`           |
-
-**按你的赛道选读（三选一）：**
-
-| 赛道                  | 教程导航                                                                                                                                                 |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 快应用 / 手表应用创新 | [快应用教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/quickapp/quickapp_guide_index.md)                         |
-| AI 硬件产品创新       | [AI 硬件赛道教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/ai_hardware/ai_hardware_guide_index.md)              |
-| 新硬件适配            | [新硬件适配赛道教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/hardware_porting/hardware_porting_guide_index.md) |
-
----
-
-## 二、第一步：拉取完整工程
-
-用组委会提供的命令一键拉取「openvela 全量源码 + 你的专属仓」：
-
-```bash
-repo init -u https://github.com/open-vela/contest2026_026_dami \
-  -b dev-ai-contest-2026 -m contest2026_026_dami.xml
-repo sync -c -j8
-```
-
-同步后，你的整个仓库位于工作区的 `contest2026_026_dami/`，openvela 全量源码在外层（`nuttx/`、`apps/`、`packages/`、`vendor/` 等）。
-
----
-
-## 三、第二步：在哪里写代码
-
-**只在自己的仓目录 `contest2026_026_dami/` 里开发。** 不同作品形态放在对应子目录，manifest 会通过 `<linkfile>` 把它们**软链**到 openvela 编译树该在的位置——你不用手动 copy：
-
-| 作品形态 | 你的代码放这里             | 系统自动映射到                                 |
-| -------- | -------------------------- | ---------------------------------------------- |
-| 应用     | `app/hello_app/`           | `packages/demos/contest2026_026_hello_app`     |
-| 快应用   | `quickapp/hello_quickapp/` | `packages/apps/contest2026_026_hello_quickapp` |
-| 板级适配 | `board/contest_board/`     | `vendor/openvela/boards/contest2026_026_board` |
-
-> 用不到的形态目录可以删掉；新增作品时按同样规则加子目录，并在 `contest2026_026_dami.xml` 里补一条 `<linkfile>` 映射即可。**生产仓库（packages/nuttx/vendor 等）零改动。**
-
-建议仓库目录约定（便于评委定位）：
-
-```text
-app/ | quickapp/ | board/   # 你的作品代码
-logs/                       # AI Coding 日志（主动导出后提交，格式见 logs/README.md）
-README.md                   # 作品说明（提交前请改成你自己的，见第六节）
-```
-
-> 仓内附带了一个 `.gitignore.example`，给出了**编译产物**等不需要进仓的文件示例。如需启用，`cp .gitignore.example .gitignore` 后按需增删即可。**注意 `logs/` 下最终导出的 AI Coding 日志必须提交，不要忽略。**
->
-> `logs/` 的目录结构与提交格式见 [logs/README.md](logs/README.md)。
-
----
-
-## 四、第三步：编译与运行
-
-编译/运行步骤随作品形态不同而不同，请参考你所在赛道的教程导航：
-
-- 快应用 / 手表应用：[快应用教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/quickapp/quickapp_guide_index.md)（含模拟器与开发板部署）。
-- AI 硬件产品创新：[AI 硬件赛道教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/ai_hardware/ai_hardware_guide_index.md)（环境搭建、编译烧录、Skill 开发）。
-- 新硬件适配：[新硬件适配赛道教程导航](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/hardware_porting/hardware_porting_guide_index.md)（BSP 移植、最小 NSH 基线）。
-
-子目录已通过 manifest 中的 `<linkfile>` 软链进 openvela 编译树，因此构建在 openvela 工作区**根目录**（即你这个仓的上一级）进行。openvela 使用 `build.sh` 作为统一入口，接收一个 **board config 路径**作为参数：
-
-```bash
-# 进入 openvela 工作区根目录（你的仓的上一级）
-cd ..
-
-# 通用语法：第一个参数是 board config 路径，第二个参数可以是 menuconfig / distclean 等
-./build.sh <board-config-path> [menuconfig|distclean] [-j8]
-```
-
-> 具体的 board config 路径、目标产物、模拟器/真机部署方式请以你所在赛道的教程导航为准。本仓 `app/` `quickapp/` `board/` 三个示例骨架对应的 Kconfig 选项可通过 `menuconfig` 启用。
-
----
-
-## 五、第四步：提交作品
-
-1. **fork** 你的专属仓 → 开发 → `git commit` 并推送 → 向专属仓发起 **Pull Request**，可**自行 review 并合入**（无需等组委会）。
-2. **AI Coding 日志**：与 AI 工具的对话会自动记录到本机 staging（不会自动上传），需你**主动导出/打包**选定会话到仓内 `logs/` 目录后一并提交。详见[《AI Coding 日志归集与提交手册》](https://github.com/open-vela/docs/blob/dev-ai-contest-2026/zh-cn/contest_2026/ai_coding_log_guide.md)。
-3. 若需改动 **nuttx 等公共仓库**，不在本仓改，而是 fork 对应公共仓、以 PR 提交到 `dev-ai-contest-2026` 分支，由组委会 review 后合入。
-
-> ⏰ **提交作品截止：9 月 20 日**。截止后统一收回 push 权限，仍可查看 / clone。
->
-> 获奖后再按要求将作品 PR 至 openvela 上游对应仓库（走标准 PR + CI 流程）。
-
-### 关于 PR 与 CLA
-
-- 本仓所有改动通过 **Pull Request** 合入（分支保护强制，可自行合入自己的 PR）。
-- 首次贡献需在[**官网签署 CLA**](https://openvela.com/#/community/cla)；PR 上会自动跑 `cla/signature` 检查，在官网签署成功后，在 PR 评论 `/check-cla` 复检即可通过。
-
----
-
-## 六、提交前：把本 README 改成你的作品说明
-
-本文件目前是组委会给的**使用说明书**。**作品提交前，请把它替换成你自己作品的说明**，方便评委快速了解你做了什么、怎么跑起来。建议至少包含以下内容：
-
-```markdown
-# <你的作品名>
+> 队伍编号：contest2026_026 | 队伍名称：dami | 赛道：AI 硬件产品创新
 
 ## 一、作品简介
-<一句话/一段话说明这个作品是什么、解决什么问题、亮点在哪>
+
+本项目实现了一套基于 ESP32-S3 Eye 开发板的**智能投屏系统**，能够将 PC 桌面画面实时投射到开发板的 240×240 LCD 屏幕上。系统采用上位机/下位机架构：上位机（Linux PC）通过 X11 截取屏幕内容，经双线性插值缩放并转换为 RGB565 格式后，通过 WiFi TCP 协议传输至下位机；下位机运行 openvela RTOS，使用 LVGL 图形框架将接收到的图像数据实时渲染到 ST7789 LCD 屏幕。整个系统具备低延迟、实时显示的特点，展示了嵌入式设备作为智能显示终端的可能性。
 
 ## 二、选题方向
-<快应用 / 手表应用创新 ｜ AI 硬件产品创新 ｜ 新硬件适配 ｜ 自定方向，并简述理由>
 
-## 三、目录结构
-<列出你这个仓里各目录/文件的作用，例如：>
-- `app/xxx/`        — <说明>
-- `board/xxx/`      — <说明>
-- `quickapp/xxx/`   — <说明>
-- `logs/`           — AI Coding 日志
-- `docs/` 或其他    — <说明>
+**AI 硬件产品创新**
 
-## 四、运行方式
-<拉取工程后，如何编译、烧录/部署、运行的完整步骤；最好能让评委照着一步步复现>
+基于 ESP32-S3 Eye 开发板，利用 openvela RTOS 和 LVGL 图形框架实现 PC 屏幕内容的实时投射。该项目展示了嵌入式设备作为低成本、便携式智能显示终端的潜力，可拓展至信息看板、远程监控、智能家居控制面板等场景。
 
-## 五、AI Coding 使用说明
-<说明本作品如何借助 AI 辅助开发：
-- 在需求拆解 / 方案设计 / 编码 / 调试 / 文档等环节如何与 AI 协作；
-- AI 对开发效率或质量带来的实际帮助。
-完整对话日志见 logs/ 目录>
+## 三、系统架构
+
+```
+┌─────────────────────────────────────────────────────┐
+│                    上位机 (Linux PC)                  │
+│  X11 屏幕截图 → 双线性插值缩放 (240×240) → RGB565    │
+│                   cm_server (TCP:8080)               │
+└───────────────────────┬─────────────────────────────┘
+                        │ WiFi (TCP Socket)
+                        ▼
+┌─────────────────────────────────────────────────────┐
+│              下位机 (ESP32-S3 Eye)                    │
+│  WiFi 连接 → Socket 接收 RGB565 → LVGL 渲染 → LCD   │
+│                 cm_app (openvela RTOS)               │
+└─────────────────────────────────────────────────────┘
 ```
 
-> 提示：将会根据「作品本身 + 你的 README 说明 + `logs/` 里的 AI Coding 日志」来理解和评估你的作品，README 写清楚很重要。
+## 四、技术栈
 
----
+| 类别 | 技术 |
+|------|------|
+| 嵌入式操作系统 | openvela (基于 NuttX) |
+| 图形框架 | LVGL (v9, RGB565 色彩格式) |
+| 硬件平台 | ESP32-S3 Eye (Xtensa 双核, 240×240 ST7789 LCD) |
+| 通信协议 | WiFi TCP Socket (端口 8080) |
+| 上位机语言 | C (X11 截屏 + Socket 服务) |
+| 调试工具 | Python (串口通信 + 截图工具) |
+| 构建系统 | CMake + Make |
 
-## 附：仓库命名规范
+### openvela 能力使用
 
-`contest2026_<编号>_<队伍名>` — 编号三位零填充；队名 slug（全小写、英文/拼音、连字符）。例：`contest2026_026_dami`。
-（仓库由组委会统一创建，**每队仅一个仓**，无需自行命名。）
+本项目深度使用了 openvela 的以下核心能力，符合大赛"基于 openvela 开发"的判定标准（落地图形核心能力）：
+
+| openvela 能力 | 使用详情 |
+|---------------|---------|
+| **图形（LVGL 集成）** | 使用 openvela 原生 LVGL port，通过 `/dev/lcd0` Framebuffer 驱动 ST7789 LCD，实现 RGB565 图片渲染和文本终端 GUI |
+| **WiFi 子系统** | 使用 WAPI（`wapi psk`/`wapi essid`）进行 WiFi 配网，通过 `netlib` 接口获取 IPv4 地址 |
+| **LCD 驱动框架** | 使用 openvela 的 ST7789 LCD 驱动（SPI 接口），配置 Framebuffer 双缓冲 |
+| **NuttX POSIX API** | 使用标准 POSIX socket（TCP）、文件 I/O、pthreads 等接口进行网络通信和多线程编程 |
+| **Xtensa ESP32-S3 架构支持** | 基于 openvela 的 ESP32-S3 BSP，启用 SMP 双核、SPI RAM、USB 串口等特性 |
+
+## 五、目录结构
+
+- `app/camera_app/` — cm_app 主应用（WiFi 连接、Socket 通信、LVGL GUI 显示）
+- `app/hello_app/` — Hello 示例应用（用于验证构建环境）
+- `board/contest_board/` — 自定义开发板配置（板级初始化代码）
+- `quickapp/hello_quickapp/` — 快应用形态样例
+- `socket_proj/` — 上位机程序（X11 屏幕截图 + TCP 服务器 + RGB565 转换）
+- `python/` — Python 串口调试工具（自动配网、时间同步、截图测试）
+- `tools/` — 构建/烧录/配置脚本（`update.sh`、`build.sh`、`flash.sh`、`remove.sh`、`defconfig`）
+- `logs/` — AI Coding 日志
+
+## 六、运行方式
+
+### 前置条件
+
+**硬件要求：**
+- ESP32-S3 Eye 开发板
+- USB 数据线（Type-C 或 Micro-USB）
+- 2.4GHz WiFi 网络（ESP32-S3 不支持 5GHz）
+
+**软件要求：**
+- openvela 开发环境（已配置好基础编译工具链）
+- Xtensa ESP32-S3 工具链（`xtensa-esp32s3-elf`）
+- Linux 系统 + X11 桌面环境（上位机截图需要）
+- CMake ≥ 3.10（上位机编译需要）
+
+### 下位机编译与烧录
+
+该工程基于 openvela 开发，需确保已安装 openvela 的基础环境。编译与运行只需如下四步（请确保在 openvela 根目录执行）：
+
+**（1）初始化项目**
+```bash
+sudo bash ./contest2026_026_dami/tools/update.sh
+```
+此脚本会：
+- 记录你的 openvela env 路径和 Xtensa 工具链路径到 `cm_app_build.config`
+- 复制 `defconfig` 到 `vendor/espressif/boards/esp32s3/esp32s3-eye/configs/openvela/`
+
+**（2）构建固件**
+```bash
+sudo bash ./contest2026_026_dami/tools/build.sh
+```
+
+**（3）配置菜单**
+在弹出的 `menuconfig` 界面中，勾选 `cm_app`（位于 Contest 2026 team 026 分类下）。
+
+**（4）烧录固件**
+```bash
+sudo bash ./contest2026_026_dami/tools/flash.sh
+```
+烧录完成后会自动打开 minicom 串口终端。
+
+### 上位机编译与运行
+
+```bash
+# 1. 进入上位机项目目录
+cd /home/log/openvela/contest2026_026_dami/socket_proj/build
+
+# 2. 安装依赖（X11 开发库）
+sudo apt-get install imagemagick
+
+# 3. 编译
+cmake .. && make
+
+# 4. 运行，等待 ESP32 连接
+./cm_server
+```
+
+### 系统启动流程
+
+1. 烧录完成后，通过串口终端输入 `cm_app <WiFi名称> <WiFi密码> <上位机IP>` 启动投屏
+2. 下位机自动连接 WiFi 并与上位机建立 TCP 连接
+3. 上位机开始持续截取屏幕并推送到下位机
+4. 下位机将接收到的画面实时渲染到 LCD 屏幕
+
+### 常见问题
+
+**Q: 屏幕发灰或显示异常？**
+
+执行以下步骤修复 LCD 初始化：
+1. 运行 `build.sh` 打开 menuconfig，勾选 `LCD_ST7789_3WIRE`（Use 3 wire interface），保存并烧录
+2. 启动板子后运行 `lvgldemo`，此时屏幕可能不亮
+3. 退出后重新关闭 `LCD_ST7789_3WIRE`，再次烧录
+4. 重新启动即可恢复正常
+
+**Q: ESP32 无法与上位机连接？**
+
+1. 如果上位机环境是 VMware 虚拟机中的 Linux，**必须使用桥接模式**，否则 ESP32-S3 客户端无法与上位机建立连接
+2. 如果提示 `ERROR: netlib_obtain_ipv4addr()`，请检查 WiFi 是否为 **2.4GHz 频段**（ESP32-S3 不支持 5GHz）
+
+### 演示效果
+
+- 上位机启动 `cm_server` 后，ESP32-S3 Eye 连接 WiFi 并自动建立 TCP 连接
+- PC 桌面画面实时投射到 240×240 LCD 屏幕，画面经过双线性插值缩放，色彩通过 RGB565 格式还原
+- 投屏为持续推送模式，可实现基本的桌面内容同步显示
+
+完整演示视频见项目根目录 `演示视频.mp4`。
+
+## 七、AI Coding 使用说明
+
+本项目在以下环节借助 AI 辅助开发：
+
+- **需求拆解**：AI 协助将"屏幕投射"这一整体需求拆分为下位机 WiFi 连接、Socket 通信、LVGL 渲染、上位机截屏与转换等独立模块
+- **方案设计**：AI 辅助设计上下位机通信协议，确定使用 0x80 请求码 + 2 字节图片信息头 + RGB565 像素数据的简洁数据格式
+- **编码实现**：AI 辅助编写 socket_tools 通信库（TCP 连接管理、数据收发封装）、GUI 封装层（LVGL 初始化、图片渲染、文本终端）、上位机屏幕截图与色彩转换模块（X11 截图、双线性插值缩放、RGB888→RGB565 转换）
+- **调试排查**：AI 协助解决 WiFi 配网失败、LCD 屏幕初始化顺序导致的显示异常、VMware 网络桥接等实际开发中的常见问题
+
+完整对话日志见 `logs/` 目录。
+
+**AI Skill 沉淀**：本项目暂未沉淀独立的 AI Skill 文件，AI 辅助开发的完整经验和对话记录均保留在 `logs/` 目录中供参考。
+
+## 八、应用场景与商业潜力
+
+本项目的投屏方案基于低成本 ESP32-S3 开发板（单价约 30-50 元），具备以下可落地的应用场景：
+
+| 场景 | 说明 |
+|------|------|
+| **会议室状态看板** | 将会议室预约系统、日程安排等内容投射到门口的小型显示屏，替代昂贵的商用信息屏 |
+| **智能家居控制面板** | 将 Home Assistant 等智能家居控制界面投射到墙壁嵌入式屏幕，实现低成本触控/显示终端 |
+| **工业设备远程监控** | 将产线监控仪表盘远程投射到工位旁的嵌入式屏幕，方便操作员实时查看设备状态 |
+| **教育/创客演示** | 用于嵌入式开发教学演示，学生可通过本项目学习 WiFi 通信、图形渲染、RTOS 开发等完整链路 |
+
+技术方案具备规模化推广潜力：上位机可扩展为云端服务（替代单机 X11 截屏），下位机可适配更多带 LCD 的 openvela 支持硬件，形成通用的"云端→嵌入式屏幕"投屏方案。
+
+## 九、许可协议
+
+本项目基于 [Apache License 2.0](LICENSE) 开源发布。

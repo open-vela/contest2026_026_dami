@@ -1,0 +1,3 @@
+ifneq ($(CONFIG_LVX_USE_CONTEST2026_026_CAM_APP),)
+CONFIGURED_APPS += $(APPDIR)/packages/contest2026_026_camera_app
+endif
